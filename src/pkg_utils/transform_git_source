@@ -35,7 +35,7 @@ def fetch_into_cache(local_repo, spec)
   unless local_repo.exist?
     local_repo.mkpath
     Dir.chdir(local_repo.to_s) do
-      %x(git clone --bare #{uri} .)
+      %x(git clone --bare #{uri.sub("git://","https://")} .)
     end
   end
   Dir.chdir(local_repo) do

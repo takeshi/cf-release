@@ -27,10 +27,8 @@ logging:
 <% if properties.uaa.jwt && properties.uaa.jwt.signing_key && properties.uaa.jwt.verification_key %>
 jwt:
   token:
-    signing-key: |
-<%= "        " + properties.uaa.jwt.signing_key.gsub("\n", "\n        ") %>
-    verification-key: |
-<%= "        " + properties.uaa.jwt.verification_key.gsub("\n", "\n        ") %>
+    signing-key: <%= properties.uaa.jwt.signing_key %>
+    verification-key: <%= properties.uaa.jwt.verification_key %>
 <% elsif properties.uaa.cc && properties.uaa.cc.token_secret %>
 jwt:
   token:
@@ -39,8 +37,6 @@ jwt:
 <% end %>
 
 oauth:
-  authorize:
-    ssl: true
   client:
   <% if properties.uaa.autoapprove %>
     autoapprove: <% properties.uaa.autoapprove.each do |client_id| %>

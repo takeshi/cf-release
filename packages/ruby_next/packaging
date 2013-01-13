@@ -1,6 +1,14 @@
 # abort script on any command that exit with a non zero value
 set -e
 
+tar xzf yaml/yaml-0.1.4.tar.gz
+(
+  cd yaml-0.1.4
+  ./configure
+  make
+  make install
+)
+
 tar xzf ruby/ruby-1.9.3-p194.tar.gz
 (
   cd ruby-1.9.3-p194

@@ -6,4 +6,8 @@ core:
   - vcap_redis
   - uaa
   - acm
+  - stager
+  - health_manager_next
+  - serialization_data_server
+
   

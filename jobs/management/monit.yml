@@ -1,0 +1,9 @@
+---
+core:
+  - debian_nfs_server
+  - postgres
+  - nats
+  - vcap_redis
+  - uaa
+  - acm
+  

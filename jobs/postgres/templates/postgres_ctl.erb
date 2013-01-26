@@ -70,7 +70,10 @@ case "$1" in
                   -w start -D $DATA_DIR -l \"$DATA_DIR/pg_log/startup.log\""
 
     echo "PostgreSQL started successfully"
-
+    
+    echo "Install Extention"
+    $PACKAGE_DIR/bin/psql -U vcap -p $PORT -d postgres \
+                          -c "CREATE EXTENSION citext;"
     echo "Creating roles..."
     <% db.roles.each do |role| %>
       echo "Trying to create role <%= role.name %>..."
@@ -78,6 +81,7 @@ case "$1" in
       # TODO remove unused roles automatically
       # Default permissions are: nosuperuser nologin inherit nocreatedb.
       # Will fail if role already exists, which is OK
+
       $PACKAGE_DIR/bin/psql -U vcap -p $PORT -d postgres \
                             -c "CREATE ROLE \"<%= role.name %>\""
       set -e
@@ -101,6 +105,10 @@ case "$1" in
         $PACKAGE_DIR/bin/psql -U vcap -p $PORT \
                               -d "<%= database.name %>" \
                               -f $PACKAGE_DIR/share/postgresql/contrib/citext.sql
+       
+        $PACKAGE_DIR/bin/psql -U vcap -p $PORT \
+                              -d "<%= database.name %>" \
+                              -c "CREATE EXTENSION citext;"
         set -e
       <% end %>
 

@@ -1,0 +1,7 @@
+---
+name: vmc
+dependencies:
+- ruby_next
+files:
+- vmc/**/*
+- pkg_utils/*

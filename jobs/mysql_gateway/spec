@@ -2,7 +2,7 @@
 name: mysql_gateway
 
 templates:
-  mysql_gateway_ctl: bin/mysql_gateway_ctl
+  mysql_gateway_ctl.erb: bin/mysql_gateway_ctl
   mysql_gateway.yml.erb: config/mysql_gateway.yml
   syslog_forwarder.conf.erb: config/syslog_forwarder.conf
 
@@ -11,5 +11,6 @@ packages:
   - mysql_gateway
   - mysqlclient
   - ruby
+  - vmc
   - sqlite
   - syslog_aggregator

@@ -1,0 +1,12 @@
+# abort script on any command that exit with a non zero value
+set -e
+
+cp -a * ${BOSH_INSTALL_TARGET}
+
+(
+  cd ${BOSH_INSTALL_TARGET}/vmc
+
+  bundle_cmd=/var/vcap/packages/ruby_next/bin/bundle
+
+  $bundle_cmd install --local --deployment --without development test
+)

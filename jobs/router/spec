@@ -10,7 +10,7 @@ templates:
   syslog_forwarder.conf.erb:    config/syslog_forwarder.conf
   trafficlog_forwarder.conf.erb: config/trafficlog_forwarder.conf
   setup_trafficlog_forwarder.sh:   bin/setup_trafficlog_forwarder.sh
-
+  index.html: www/index.html
 packages:
   - common
   - router
